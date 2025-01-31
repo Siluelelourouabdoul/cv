@@ -15,7 +15,7 @@
                 {% if edit %}
                 <form action="{% url 'edit-loisir' id=loisir.id %}" method="post">
                 {% else %}
-                <form id="loisirForm" method="post"></form>
+                <form id="loisirForm" method="post">
                 {% endif %}
                     {% csrf_token %}
                     <div class="" style="padding: 10px;">
@@ -92,7 +92,7 @@
                 // Récupérer les données du formulaire
                 let formData = $("#loisirForm").serialize();
                 let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-
+                console.log('-------------------------: '+formData)
                 // Effectuer une requête AJAX
                 $.ajax({
                     url: "{% url 'loisirs' %}", // Remplacez par l'URL de votre vue Django

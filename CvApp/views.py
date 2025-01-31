@@ -17,9 +17,9 @@ def showCv(request):
     return render(request, 'formatCv/defaut.html')
 
 
-def creerCv(request):
+# def creerCv(request):
 
-    return render(request, 'utilisateur/profil/templateCv/cv.html')
+#     return render(request, 'utilisateur/profil/templateCv/cv.html')
 
 
 def index(request):
@@ -346,6 +346,12 @@ def loisirs(request):
 # gerer la connexion de l'utilisateur
 
 
+@login_required
+def ajouterCv(request, numero):
+    template_path = f"formatCv/{numero}.html"  # Génération du chemin dynamique
+    return render(request, "utilisateur/profil/templateCv/ajouterCv.html", {'template_path':template_path})
+
+
 def connexion(request):
     context = {}
     if request.method == "POST":
@@ -443,6 +449,7 @@ def getCv(request):
 def creerCv(request):
     # Reccuperer l'id du cv gardé en session
     if request.method == "POST":
+
         # Récupérer les données envoyées
         loisirs = request.POST.getlist("loisir[]")
         formations = request.POST.getlist("formation[]")
@@ -452,7 +459,12 @@ def creerCv(request):
         titre = request.POST.get("titre")
         description = request.POST.get("description")
 
-        modele = get_object_or_404(ModelCv, id=request.session.get("modele"))
+        print('--------------------------------------1')
+
+        modele = get_object_or_404(
+            ModelCv, numero=request.session.get("modele"))
+
+        print('--------------------------------------2')
 
         cv = Cv.objects.create(
             poste=titre,

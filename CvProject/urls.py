@@ -46,14 +46,14 @@ urlpatterns = [
 
 
     path('format/', views.format, name='format'),
-    path('nouveau-cv/', views.creerCv, name='cv'),
 
     path('get-formation/', views.getFormation, name='get-formation'),
     path('get-competence/', views.getCompetence, name='get-competence'),
     path('get-langue/', views.getLangue, name='get-langue'),
     path('get-loisir/', views.getLoisir, name='get-loisir'),
     path('get-experience/', views.getExperience, name='get-experience'),
-    path('enregistrer-cv/', views.creerCv, name='enregistrer-cv'),
+    path('enregistrer-cv/', views.creerCv, name='enregistrer_cv'),
+    path('user/ajouter-cv/<int:numero>', views.ajouterCv, name='ajouter-cv'),
 
     path('edit-competence/<int:id>', views.editCompetence, name='edit-competence'),
     path('edit-formation/<int:id>', views.editFormation, name='edit-formation'),

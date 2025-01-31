@@ -419,10 +419,10 @@ nav{
                 // Récupérer les données du formulaire
                 let formData = $("#cvForm").serialize();
                 let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-
+                console.log('66----------------:'+formData)
                 // Effectuer une requête AJAX
                 $.ajax({
-                    url: "{% url 'enregistrer-cv' %}", // Remplacez par l'URL de votre vue Django
+                    url: "{% url 'enregistrer_cv' %}", // Remplacez par l'URL de votre vue Django
                     type: "POST",
                     data: formData,
                     headers: { "X-CSRFToken": csrfToken },

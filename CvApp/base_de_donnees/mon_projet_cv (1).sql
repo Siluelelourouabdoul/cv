@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 30 jan. 2025 à 13:21
+-- Généré le : ven. 31 jan. 2025 à 23:22
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.0.30
 
@@ -126,6 +126,14 @@ CREATE TABLE `cvapp_competence` (
   `competence` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `cvapp_competence`
+--
+
+INSERT INTO `cvapp_competence` (`id`, `competence`) VALUES
+(1, 'Master1 informatique'),
+(2, 'Master2 Informatique');
+
 -- --------------------------------------------------------
 
 --
@@ -142,6 +150,13 @@ CREATE TABLE `cvapp_cv` (
   `personne_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `cvapp_cv`
+--
+
+INSERT INTO `cvapp_cv` (`id`, `poste`, `description`, `photo`, `terminer`, `modele_id`, `personne_id`) VALUES
+(1, 'informaticien', 'dkld;pd;dpspsps', '', 1, 2, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -153,6 +168,13 @@ CREATE TABLE `cvapp_cv_competences` (
   `cv_id` bigint(20) NOT NULL,
   `competence_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `cvapp_cv_competences`
+--
+
+INSERT INTO `cvapp_cv_competences` (`id`, `cv_id`, `competence_id`) VALUES
+(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -166,6 +188,13 @@ CREATE TABLE `cvapp_cv_experiences` (
   `experienceprofessionnelle_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `cvapp_cv_experiences`
+--
+
+INSERT INTO `cvapp_cv_experiences` (`id`, `cv_id`, `experienceprofessionnelle_id`) VALUES
+(1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -178,6 +207,14 @@ CREATE TABLE `cvapp_cv_formations` (
   `formation_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `cvapp_cv_formations`
+--
+
+INSERT INTO `cvapp_cv_formations` (`id`, `cv_id`, `formation_id`) VALUES
+(1, 1, 1),
+(2, 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -189,6 +226,14 @@ CREATE TABLE `cvapp_cv_langues` (
   `cv_id` bigint(20) NOT NULL,
   `langue_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `cvapp_cv_langues`
+--
+
+INSERT INTO `cvapp_cv_langues` (`id`, `cv_id`, `langue_id`) VALUES
+(1, 1, 1),
+(2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -217,6 +262,14 @@ CREATE TABLE `cvapp_experienceprofessionnelle` (
   `description` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `cvapp_experienceprofessionnelle`
+--
+
+INSERT INTO `cvapp_experienceprofessionnelle` (`id`, `job_titre`, `entreprise`, `localite`, `periode`, `description`) VALUES
+(1, 'Developpeur', 'Soghobo consulting', 'Abidjan/Abobo', '2015-2016', 'development backends'),
+(2, 'superviseur ', 'bolou service', 'Agboville/Maquis bleu', '2018-2019', 'vhhjskjkskjkjskjss');
+
 -- --------------------------------------------------------
 
 --
@@ -230,6 +283,14 @@ CREATE TABLE `cvapp_formation` (
   `periode` varchar(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `cvapp_formation`
+--
+
+INSERT INTO `cvapp_formation` (`id`, `etablissement`, `diplome`, `periode`) VALUES
+(1, 'uphb', 'Licence1maths informatique', '2013'),
+(2, 'una', 'Licence2 informatique', '2014');
+
 -- --------------------------------------------------------
 
 --
@@ -240,6 +301,14 @@ CREATE TABLE `cvapp_langue` (
   `id` bigint(20) NOT NULL,
   `langue` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `cvapp_langue`
+--
+
+INSERT INTO `cvapp_langue` (`id`, `langue`) VALUES
+(1, 'Français '),
+(2, 'Anglais');
 
 -- --------------------------------------------------------
 
@@ -252,6 +321,14 @@ CREATE TABLE `cvapp_loisir` (
   `loisirs` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `cvapp_loisir`
+--
+
+INSERT INTO `cvapp_loisir` (`id`, `loisirs`) VALUES
+(1, 'football '),
+(2, 'lecture ');
+
 -- --------------------------------------------------------
 
 --
@@ -263,6 +340,14 @@ CREATE TABLE `cvapp_modelcv` (
   `numero` varchar(5) NOT NULL,
   `photo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `cvapp_modelcv`
+--
+
+INSERT INTO `cvapp_modelcv` (`id`, `numero`, `photo`) VALUES
+(1, '0', 'cv/0.png'),
+(2, '1', 'cv/1.PNG');
 
 -- --------------------------------------------------------
 
@@ -291,8 +376,9 @@ CREATE TABLE `cvapp_personne` (
 --
 
 INSERT INTO `cvapp_personne` (`id`, `password`, `last_login`, `is_superuser`, `is_staff`, `is_active`, `date_joined`, `email`, `nom`, `prenom`, `telephone`, `adresse`, `photo`) VALUES
-(1, 'pbkdf2_sha256$600000$wIjUHIzJFbus0jUu8C0q9b$qQrYBKpb8QGaeg5wbFYie4zf4U/eAKp5LM9p0SAng0c=', '2025-01-30 12:02:47.826784', 0, 0, 1, '2025-01-30 12:00:04.125462', 'karimsilue487@gmail.com', 'silue', 'Lelourou abdoul karim', '0779250252', 'Adjame', 'photos/photo_qdF2m6n.jpg'),
-(2, 'pbkdf2_sha256$600000$jTbVgN0h3rh9WEkqmUgEKa$5GVY01cwsoD10qRNR5n09GWmOYhKmo7jt0H570N28T4=', NULL, 0, 0, 1, '2025-01-30 12:02:19.292352', 'karimsilue48@gmail.com', 'Konan', 'Abdoul', '0708829237', 'yopugon', 'photos/WhatsApp_Image_2023-11-15_à_14.30.30_cb1f77dc.jpg');
+(1, 'pbkdf2_sha256$600000$wIjUHIzJFbus0jUu8C0q9b$qQrYBKpb8QGaeg5wbFYie4zf4U/eAKp5LM9p0SAng0c=', '2025-01-30 21:51:13.574893', 0, 0, 1, '2025-01-30 12:00:04.125462', 'karimsilue487@gmail.com', 'silue', 'Lelourou abdoul karim', '0779250252', 'Adjame', 'photos/photo_qdF2m6n.jpg'),
+(2, 'pbkdf2_sha256$600000$jTbVgN0h3rh9WEkqmUgEKa$5GVY01cwsoD10qRNR5n09GWmOYhKmo7jt0H570N28T4=', NULL, 0, 0, 1, '2025-01-30 12:02:19.292352', 'karimsilue48@gmail.com', 'Konan', 'Abdoul', '0708829237', 'yopugon', 'photos/WhatsApp_Image_2023-11-15_à_14.30.30_cb1f77dc.jpg'),
+(4, 'pbkdf2_sha256$600000$W6RVPVwtIRVelQhoH2sVFy$xv6JtHGQ9Xic7EEx/0RE5JrhdTUcV8iVauZubVTc1B4=', '2025-01-31 21:34:12.203303', 1, 1, 1, '2025-01-31 21:30:50.237784', 'karimsilue@gmail.com', 'silue', 'karim', '0103205636', 'agboville', '');
 
 -- --------------------------------------------------------
 
@@ -334,6 +420,14 @@ CREATE TABLE `django_admin_log` (
   `content_type_id` int(11) DEFAULT NULL,
   `user_id` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `django_admin_log`
+--
+
+INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
+(1, '2025-01-31 21:36:12.864706', '1', 'ModelCv object (1)', 1, '[{\"added\": {}}]', 11, 4),
+(2, '2025-01-31 21:36:46.786088', '2', 'ModelCv object (2)', 1, '[{\"added\": {}}]', 11, 4);
 
 -- --------------------------------------------------------
 
@@ -415,6 +509,13 @@ CREATE TABLE `django_session` (
   `session_data` longtext NOT NULL,
   `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `django_session`
+--
+
+INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
+('k1q8o0sytex51exlkrhav7ka6gfnw56j', '.eJxVjjkOgzAQRe_iGlmDbWygTJ8zoBmPJ5AFJAxpotw9EFEk7X9_e6kO16Xv1pzmbmDVKqeKX40w3tK4A77ieJl0nMZlHkjvFn3QrM8Tp_vp8P4V9Jj7LV15goYYfSzFIrrAjq0RsTGwIYZEEiA0ViKJMVyjrzw0GwKoSqB6K33sG0m1UKj4_J4t3x_v4D6u:1tdzMr:kAMmGXt6U4PrlYksgH8paviTgDEa7Y5ZGVq2DyVuMeI', '2025-02-14 22:20:05.849498');
 
 --
 -- Index pour les tables déchargées
@@ -604,37 +705,37 @@ ALTER TABLE `auth_permission`
 -- AUTO_INCREMENT pour la table `cvapp_competence`
 --
 ALTER TABLE `cvapp_competence`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_cv`
 --
 ALTER TABLE `cvapp_cv`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_cv_competences`
 --
 ALTER TABLE `cvapp_cv_competences`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_cv_experiences`
 --
 ALTER TABLE `cvapp_cv_experiences`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_cv_formations`
 --
 ALTER TABLE `cvapp_cv_formations`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_cv_langues`
 --
 ALTER TABLE `cvapp_cv_langues`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_cv_loisirs`
@@ -646,37 +747,37 @@ ALTER TABLE `cvapp_cv_loisirs`
 -- AUTO_INCREMENT pour la table `cvapp_experienceprofessionnelle`
 --
 ALTER TABLE `cvapp_experienceprofessionnelle`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_formation`
 --
 ALTER TABLE `cvapp_formation`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_langue`
 --
 ALTER TABLE `cvapp_langue`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_loisir`
 --
 ALTER TABLE `cvapp_loisir`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_modelcv`
 --
 ALTER TABLE `cvapp_modelcv`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_personne`
 --
 ALTER TABLE `cvapp_personne`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `cvapp_personne_groups`
@@ -694,7 +795,7 @@ ALTER TABLE `cvapp_personne_user_permissions`
 -- AUTO_INCREMENT pour la table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `django_content_type`
