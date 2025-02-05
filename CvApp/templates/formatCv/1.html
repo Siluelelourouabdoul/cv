@@ -228,7 +228,7 @@
                     {% if cv.photo %}
                         <img src="{{cv.photo.url}}" id="photo">
                     {% else %}
-                        <img src="{{user.photo.url}}" id="photo">
+                        {% comment %} <img src="{{user.photo.url}}" id="photo"> {% endcomment %}
                     {% endif %}
                 </div>
                 <h2 id="nom">{{user.prenom}} {{user.nom|upper}}<br><span id="titre">{{cv.poste}}</span></h2>
@@ -282,7 +282,7 @@
                 <h2 class="title2">Profile</h2>
                 <p id="description" style="position: relative;">
                     {{cv.description}}
-                    <a href="{% url 'edit-profil' id='cv.id' %}" class="edit"   style="position: absolute; top: 0; right: 0; display: none;"><button class="btn btn-warning"><i class='bx bxs-edit-alt'></i></button></a>
+                    {% comment %} <a href="{% url 'edit-profil' id='cv.id' %}" class="edit"   style="position: absolute; top: 0; right: 0; display: none;"><button class="btn btn-warning"><i class='bx bxs-edit-alt'></i></button></a> {% endcomment %}
                 </p>
 
                 <h2 class="title2">Experiences</h2>
